@@ -4,12 +4,15 @@ import { View, Text, StyleSheet, TouchableOpacityBase, TouchableOpacity } from '
 interface PropsButton{
     text:string,
     color?:string,
-    btnAncho?:boolean
+    btnAncho?:boolean,
+    action: (numeroTexto:string) => void
 }
 
-export const ButtonCalc = ({text, color='#2D2D2D', btnAncho=false}:PropsButton) => {
+export const ButtonCalc = ({text, color='#2D2D2D', btnAncho=false, action}:PropsButton) => {
     return (
-        <TouchableOpacity >
+        <TouchableOpacity 
+            onPress={()=>action(text)}
+        >
             <View style={{
                     ...styles.boton,
                     backgroundColor:color,
